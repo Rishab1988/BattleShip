@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleShip
+namespace BattleShipGame
 {
-    public class Program
+    public class GamePlay
     {
-        public static void Main(string[] args)
+
+
+        public virtual void CreateBattleArea()
         {
+
         }
     }
 }
