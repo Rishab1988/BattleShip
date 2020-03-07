@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FluentValidation.Results;
 
-namespace BattleShipGame
+namespace BattleShipGame.Exceptions
 {
     public class BattleShipException : Exception
     {

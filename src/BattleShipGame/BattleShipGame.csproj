@@ -41,6 +41,7 @@
       <HintPath>..\..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,16 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddShip.cs" />
-    <Compile Include="BattleArea.cs" />
-    <Compile Include="BattleCell.cs" />
-    <Compile Include="BattleShipException.cs" />
-    <Compile Include="CreateArea.cs" />
-    <Compile Include="GamePlay.cs" />
-    <Compile Include="HitAcknowledgement.cs" />
-    <Compile Include="IBattleArea.cs" />
-    <Compile Include="InvalidConversionException.cs" />
-    <Compile Include="IShip.cs" />
+    <Compile Include="Elements\Missile\Missile.cs" />
+    <Compile Include="Elements\Ship\AddShip.cs" />
+    <Compile Include="Elements\Area\BattleArea.cs" />
+    <Compile Include="Elements\Cell\BattleCell.cs" />
+    <Compile Include="Elements\Ship\ShipFactory.cs" />
+    <Compile Include="Enums\BatteShipGameKeys.cs" />
+    <Compile Include="Exceptions\BattleShipException.cs" />
+    <Compile Include="Elements\Area\CreateArea.cs" />
+    <Compile Include="Elements\Cell\Cell.cs" />
+    <Compile Include="GamePlay\ConfiguationReader.cs" />
+    <Compile Include="GamePlay\Startup.cs" />
+    <Compile Include="GamePlay\UserInput.cs" />
+    <Compile Include="Enums\HitAcknowledgement.cs" />
+    <Compile Include="Elements\Area\Interface\IBattleArea.cs" />
+    <Compile Include="Exceptions\InvalidConversionException.cs" />
+    <Compile Include="Elements\Ship\Interfaces\IShip.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,12 +75,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PShip.cs" />
-    <Compile Include="SShip.cs" />
-    <Compile Include="StringExtensions.cs" />
-    <Compile Include="Validations\AddShipValidator.cs" />
-    <Compile Include="Validations\BattleAreaCreationValidations.cs" />
-    <Compile Include="Validations\CreateAreaValidator.cs" />
+    <Compile Include="Elements\Ship\PShip.cs" />
+    <Compile Include="Elements\Ship\QShip.cs" />
+    <Compile Include="Extensions\BattleCellExtensions.cs" />
+    <Compile Include="Validatiors\AddShipValidator.cs" />
+    <Compile Include="Validatiors\CreateAreaValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -83,6 +89,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

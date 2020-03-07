@@ -59,5 +59,122 @@ namespace BattleShipGame.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Code: {0}.
+        /// </summary>
+        internal static string Program_Main_Error_Code___0_ {
+            get {
+                return ResourceManager.GetString("Program_Main_Error_Code___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error reading from input file.
+        /// </summary>
+        internal static string Program_Main_Error_reading_from_input_file {
+            get {
+                return ResourceManager.GetString("Program_Main_Error_reading_from_input_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error creating game elements.
+        /// </summary>
+        internal static string Program_Main_Validation_Errors {
+            get {
+                return ResourceManager.GetString("Program_Main_Validation_Errors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game has ended in draw.
+        /// </summary>
+        internal static string Startup_InitiatePlay_Game_has_ended_in_draw {
+            get {
+                return ResourceManager.GetString("Startup_InitiatePlay_Game_has_ended_in_draw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-1 fires a missile with target {0} which got hit.
+        /// </summary>
+        internal static string Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_hit {
+            get {
+                return ResourceManager.GetString("Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-1 fires a missile with target {0} which got miss.
+        /// </summary>
+        internal static string Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_miss {
+            get {
+                return ResourceManager.GetString("Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_miss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-1 has no more missiles left to launch.
+        /// </summary>
+        internal static string Startup_Player1Fire_Player_1_has_no_more_missiles_left_to_launch {
+            get {
+                return ResourceManager.GetString("Startup_Player1Fire_Player_1_has_no_more_missiles_left_to_launch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-1 won the battle.
+        /// </summary>
+        internal static string Startup_Player1Fire_Player_1_won_the_battle {
+            get {
+                return ResourceManager.GetString("Startup_Player1Fire_Player_1_won_the_battle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-2 fires a missile with target {0} which got hit.
+        /// </summary>
+        internal static string Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_hit {
+            get {
+                return ResourceManager.GetString("Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-2 fires a missile with target {0} which got miss.
+        /// </summary>
+        internal static string Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_miss {
+            get {
+                return ResourceManager.GetString("Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_miss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-2 has no more missiles left to launch.
+        /// </summary>
+        internal static string Startup_Player2Fire_Player_2_has_no_more_missiles_left_to_launch {
+            get {
+                return ResourceManager.GetString("Startup_Player2Fire_Player_2_has_no_more_missiles_left_to_launch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player-2 won the battle.
+        /// </summary>
+        internal static string Startup_Player2Fire_Player_2_won_the_battle {
+            get {
+                return ResourceManager.GetString("Startup_Player2Fire_Player_2_won_the_battle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No valid input file found at : {0}.
+        /// </summary>
+        internal static string Startup_ReadInput_No_valid_input_file_found_at____0_ {
+            get {
+                return ResourceManager.GetString("Startup_ReadInput_No_valid_input_file_found_at____0_", resourceCulture);
+            }
+        }
     }
 }

@@ -117,4 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Startup_ReadInput_No_valid_input_file_found_at____0_" xml:space="preserve">
+    <value>No valid input file found at : {0}</value>
+  </data>
+  <data name="Program_Main_Validation_Errors" xml:space="preserve">
+    <value>Error creating game elements</value>
+  </data>
+  <data name="Program_Main_Error_Code___0_" xml:space="preserve">
+    <value>Error Code: {0}</value>
+  </data>
+  <data name="Program_Main_Error_reading_from_input_file" xml:space="preserve">
+    <value>Error reading from input file</value>
+  </data>
+  <data name="Startup_Player1Fire_Player_1_has_no_more_missiles_left_to_launch" xml:space="preserve">
+    <value>Player-1 has no more missiles left to launch</value>
+  </data>
+  <data name="Startup_Player2Fire_Player_2_has_no_more_missiles_left_to_launch" xml:space="preserve">
+    <value>Player-2 has no more missiles left to launch</value>
+  </data>
+  <data name="Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_hit" xml:space="preserve">
+    <value>Player-1 fires a missile with target {0} which got hit</value>
+  </data>
+  <data name="Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_hit" xml:space="preserve">
+    <value>Player-2 fires a missile with target {0} which got hit</value>
+  </data>
+  <data name="Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_miss" xml:space="preserve">
+    <value>Player-2 fires a missile with target {0} which got miss</value>
+  </data>
+  <data name="Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_miss" xml:space="preserve">
+    <value>Player-1 fires a missile with target {0} which got miss</value>
+  </data>
+  <data name="Startup_Player1Fire_Player_1_won_the_battle" xml:space="preserve">
+    <value>Player-1 won the battle</value>
+  </data>
+  <data name="Startup_Player2Fire_Player_2_won_the_battle" xml:space="preserve">
+    <value>Player-2 won the battle</value>
+  </data>
+  <data name="Startup_InitiatePlay_Game_has_ended_in_draw" xml:space="preserve">
+    <value>Game has ended in draw</value>
+  </data>
 </root>

@@ -1,4 +1,4 @@
-﻿namespace BattleShipGame
+﻿namespace BattleShipGame.Enums
 {
     public enum HitAcknowledgement
     {

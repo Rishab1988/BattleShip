@@ -1,6 +1,8 @@
-﻿using FluentValidation;
+﻿using BattleShipGame.Elements.Cell;
+using BattleShipGame.Elements.Ship;
+using FluentValidation;
 
-namespace BattleShipGame.Validations
+namespace BattleShipGame.Validatiors
 {
     public class AddShipValidator : AbstractValidator<AddShip>
     {

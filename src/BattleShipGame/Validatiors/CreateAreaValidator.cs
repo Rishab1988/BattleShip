@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using BattleShipGame.Elements.Area;
+using FluentValidation;
 
-namespace BattleShipGame.Validations
+namespace BattleShipGame.Validatiors
 {
     public class CreateAreaValidator : AbstractValidator<CreateArea>
     {

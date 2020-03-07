@@ -1,4 +1,9 @@
-﻿namespace BattleShipGame
+﻿using System.Collections.Generic;
+using BattleShipGame.Elements.Area.Interface;
+using BattleShipGame.Elements.Missile;
+using BattleShipGame.Elements.Ship;
+
+namespace BattleShipGame
 {
     public class Player
     {
@@ -8,5 +13,7 @@
         {
             BattleArea = battleArea;
         }
+
+        public IEnumerable<Missile> Missiles { get; set; }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace BattleShipGame
+﻿using BattleShipGame.Elements.Cell;
+using BattleShipGame.Elements.Ship.Interfaces;
+
+namespace BattleShipGame.Elements.Ship
 {
     public class AddShip
     {
@@ -8,9 +11,18 @@
         public int Column { get; }
         public int Row { get; }
 
+        public AddShip(IShip ship, int width, int height, int column, int row)
+        {
+            Ship = ship;
+            Height = height;
+            Width = width;
+            Column = column;
+            Row = row;
+        }
+
         public BattleCell[,] GetCells(BattleCell[,] battleCells)
         {
-            for (int i = 0; i <= Height; i++)
+            for (var i = 0; i <= Height; i++)
             {
                 battleCells[Row + i, Column].Ship = Ship;
             }

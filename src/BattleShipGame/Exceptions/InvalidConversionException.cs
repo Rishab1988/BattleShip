@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BattleShipGame
+namespace BattleShipGame.Exceptions
 {
-    public class InvalidConversionException<T, U> : Exception
+    public class InvalidConversionException<T, TU> : Exception
     {
         public Type TypeFrom { get; }
         public Type TypeTo { get; }
@@ -16,7 +16,7 @@ namespace BattleShipGame
         public InvalidConversionException(string message) : base(message)
         {
             TypeFrom = typeof(T);
-            TypeTo = typeof(T);
+            TypeTo = typeof(TU);
         }
         
     }
