@@ -91,7 +91,7 @@ namespace BattleShipGame.GamePlay
                 Player2Fire(p2M);
             }
 
-            if (!_userInput.Player[0].BattleArea.IsDestroyed || !_userInput.Player[1].BattleArea.IsDestroyed)
+            if (!_userInput.Player[0].BattleArea.IsDestroyed && !_userInput.Player[1].BattleArea.IsDestroyed)
                 Console.WriteLine(Resources.Startup_InitiatePlay_Game_has_ended_in_draw);
 
         }
