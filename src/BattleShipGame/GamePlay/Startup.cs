@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using BattleShipGame.Elements.Area;
-using BattleShipGame.Elements.Area.Interface;
 using BattleShipGame.Elements.Missile;
 using BattleShipGame.Elements.Player;
 using BattleShipGame.Elements.Player.Interface;

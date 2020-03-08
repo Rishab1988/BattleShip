@@ -1,6 +1,4 @@
-﻿using BattleShipGame.Elements.Ship;
-using BattleShipGame.Elements.Ship.Interface;
-using BattleShipGame.Enums;
+﻿using BattleShipGame.Elements.Ship.Interface;
 
 namespace BattleShipGame.Elements.Cell
 {

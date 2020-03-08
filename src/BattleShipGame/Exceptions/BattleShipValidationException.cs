@@ -9,7 +9,7 @@ namespace BattleShipGame.Exceptions
         public IEnumerable<ValidationFailure> ValidationFailures { get; }
         public BattleShipValidationException(IEnumerable<ValidationFailure> validationFailures)
         {
-            this.ValidationFailures = validationFailures;
+            ValidationFailures = validationFailures;
         }
     }
 }

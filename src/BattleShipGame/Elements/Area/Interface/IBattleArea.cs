@@ -1,5 +1,4 @@
-﻿using BattleShipGame.Elements.Ship;
-using BattleShipGame.Elements.Ship.Interface;
+﻿using BattleShipGame.Elements.Ship.Interface;
 using BattleShipGame.Enums;
 
 namespace BattleShipGame.Elements.Area.Interface

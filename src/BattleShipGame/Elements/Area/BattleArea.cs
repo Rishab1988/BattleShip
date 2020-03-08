@@ -1,11 +1,9 @@
-﻿using System;
-using BattleShipGame.Elements.Area.Interface;
+﻿using BattleShipGame.Elements.Area.Interface;
 using BattleShipGame.Elements.Cell;
-using BattleShipGame.Elements.Ship;
 using BattleShipGame.Elements.Ship.Interface;
 using BattleShipGame.Enums;
 using BattleShipGame.Exceptions;
-using BattleShipGame.Validatiors;
+using BattleShipGame.Validators;
 
 namespace BattleShipGame.Elements.Area
 {

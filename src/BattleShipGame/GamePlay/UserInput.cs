@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using BattleShipGame.Elements.Player;
 using BattleShipGame.Elements.Player.Interface;
 
 namespace BattleShipGame.GamePlay

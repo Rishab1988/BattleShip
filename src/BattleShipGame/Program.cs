@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace BattleShipGame
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var filePath = ConfiguationReader.GetValue(BatteShipGameKeys.InputPath);
-            Startup startup = new Startup(filePath);
+            var startup = new Startup(filePath);
             try
             {
                 startup.ReadInput();
