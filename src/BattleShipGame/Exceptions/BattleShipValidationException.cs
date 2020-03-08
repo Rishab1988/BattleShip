@@ -4,10 +4,10 @@ using FluentValidation.Results;
 
 namespace BattleShipGame.Exceptions
 {
-    public class BattleShipException : Exception
+    public class BattleShipValidationException : Exception
     {
         public IEnumerable<ValidationFailure> ValidationFailures { get; }
-        public BattleShipException(IEnumerable<ValidationFailure> validationFailures)
+        public BattleShipValidationException(IEnumerable<ValidationFailure> validationFailures)
         {
             this.ValidationFailures = validationFailures;
         }

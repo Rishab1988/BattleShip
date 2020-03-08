@@ -2,6 +2,7 @@
 using BattleShipGame.Elements.Area.Interface;
 using BattleShipGame.Elements.Cell;
 using BattleShipGame.Elements.Ship;
+using BattleShipGame.Elements.Ship.Interface;
 using BattleShipGame.Enums;
 using BattleShipGame.Exceptions;
 using BattleShipGame.Validatiors;
@@ -21,7 +22,7 @@ namespace BattleShipGame.Elements.Area
             var results = createAreaValidator.Validate(cell);
             if (!results.IsValid)
             {
-                throw new BattleShipException(results.Errors);
+                throw new BattleShipValidationException(results.Errors);
             }
 
             _area = new BattleCell[cell.Row+1, cell.Column+1];
@@ -33,12 +34,12 @@ namespace BattleShipGame.Elements.Area
             _addShipValidator = new AddShipValidator(_area);
         }
 
-        public virtual void AddShip(AddShip addShip)
+        public virtual void AddShip(IAddShip addShip)
         {
             var results = _addShipValidator.Validate(addShip);
             if (!results.IsValid)
             {
-                throw new BattleShipException(results.Errors);
+                throw new BattleShipValidationException(results.Errors);
             }
             _area = addShip.GetCells(_area);
         }
@@ -58,9 +59,7 @@ namespace BattleShipGame.Elements.Area
         public virtual bool IsDestroyed
         {
             get
-            {
-                try
-                {
+            {   
                     for (var i = 0; i < _area.GetLength(0); i++)
                     for (var j = 0; j < _area.GetLength(1); j++)
                     {
@@ -69,11 +68,6 @@ namespace BattleShipGame.Elements.Area
                     }
 
                     return true;
-                }
-                catch(Exception k )
-                {
-                    throw k;
-                }
             }
         }
     }

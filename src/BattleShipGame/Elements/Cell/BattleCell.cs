@@ -1,5 +1,5 @@
 ﻿using BattleShipGame.Elements.Ship;
-using BattleShipGame.Elements.Ship.Interfaces;
+using BattleShipGame.Elements.Ship.Interface;
 using BattleShipGame.Enums;
 
 namespace BattleShipGame.Elements.Cell
@@ -8,9 +8,6 @@ namespace BattleShipGame.Elements.Cell
     {
         public int HitCount { get; set; } = 0;
         public virtual bool HasShip => Ship != null;
-
-        
-
         public IShip Ship { get; set; }
     }
 }

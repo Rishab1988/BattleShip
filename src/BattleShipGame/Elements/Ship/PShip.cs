@@ -1,4 +1,4 @@
-﻿using BattleShipGame.Elements.Ship.Interfaces;
+﻿using BattleShipGame.Elements.Ship.Interface;
 
 namespace BattleShipGame.Elements.Ship
 {

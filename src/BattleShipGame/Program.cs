@@ -15,13 +15,10 @@ namespace BattleShipGame
             Startup startup = new Startup(filePath);
             try
             {
-                if (!startup.ReadInput())
-                    throw new Exception();
-
+                startup.ReadInput();
                 startup.InitiatePlay();
-
             }
-            catch (BattleShipException k)
+            catch (BattleShipValidationException k)
             {
                 Console.WriteLine(Resources.Program_Main_Validation_Errors);
                 if (k.ValidationFailures != null && k.ValidationFailures.Any())
