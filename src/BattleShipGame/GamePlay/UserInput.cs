@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using BattleShipGame.Elements.Player;
+using BattleShipGame.Elements.Player.Interface;
 
 namespace BattleShipGame.GamePlay
 {
@@ -6,12 +8,12 @@ namespace BattleShipGame.GamePlay
     {
         public UserInput()
         {
-            Player = new List<Player>(2);
+            Player = new List<IPlayer>(2);
         }
         public int Height { get; set; }
         public int Width { get; set; }
         public int ShipCount { get; set; }
-        public List<Player> Player { get; set; }
+        public List<IPlayer> Player { get; set; }
 
     }
 }

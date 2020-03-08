@@ -88,6 +88,42 @@ namespace BattleShipGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} fires a missile with target {1} which got hit.
+        /// </summary>
+        internal static string Startup_Fire__0__fires_a_missile_with_target__1__which_got_hit {
+            get {
+                return ResourceManager.GetString("Startup_Fire__0__fires_a_missile_with_target__1__which_got_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} fires a missile with target {1} which got miss.
+        /// </summary>
+        internal static string Startup_Fire__0__fires_a_missile_with_target__1__which_got_miss {
+            get {
+                return ResourceManager.GetString("Startup_Fire__0__fires_a_missile_with_target__1__which_got_miss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has no more missiles left to launch.
+        /// </summary>
+        internal static string Startup_Fire__0__has_no_more_missiles_left_to_launch {
+            get {
+                return ResourceManager.GetString("Startup_Fire__0__has_no_more_missiles_left_to_launch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} won the battle.
+        /// </summary>
+        internal static string Startup_Fire__0__won_the_battle {
+            get {
+                return ResourceManager.GetString("Startup_Fire__0__won_the_battle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game has ended in draw.
         /// </summary>
         internal static string Startup_InitiatePlay_Game_has_ended_in_draw {

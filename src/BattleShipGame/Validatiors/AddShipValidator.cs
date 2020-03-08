@@ -1,10 +1,11 @@
 ﻿using BattleShipGame.Elements.Cell;
 using BattleShipGame.Elements.Ship;
+using BattleShipGame.Elements.Ship.Interface;
 using FluentValidation;
 
 namespace BattleShipGame.Validatiors
 {
-    public class AddShipValidator : AbstractValidator<AddShip>
+    public class AddShipValidator : AbstractValidator<IAddShip>
     {
         public AddShipValidator(BattleCell[,] battleCells)
         {
@@ -19,12 +20,12 @@ namespace BattleShipGame.Validatiors
 
             RuleFor(x => x).Must((x) => {
 
-                for(int i = 0; i<= x.Height;i++)
+                for(var i = 0; i<= x.Height;i++)
                 {
                     if (battleCells[x.Row + i, x.Column].HasShip)
                         return false;
                 }
-                for (int i = 0; i <= x.Width; i++)
+                for (var i = 0; i <= x.Width; i++)
                 {
                     if (battleCells[x.Row, x.Column+i].HasShip)
                         return false;

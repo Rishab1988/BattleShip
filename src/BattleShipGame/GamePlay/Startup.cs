@@ -5,6 +5,8 @@ using System.Linq;
 using BattleShipGame.Elements.Area;
 using BattleShipGame.Elements.Area.Interface;
 using BattleShipGame.Elements.Missile;
+using BattleShipGame.Elements.Player;
+using BattleShipGame.Elements.Player.Interface;
 using BattleShipGame.Elements.Ship;
 using BattleShipGame.Extensions;
 using BattleShipGame.Properties;
@@ -22,6 +24,8 @@ namespace BattleShipGame.GamePlay
             _userInput = new UserInput();
         }
 
+
+      
         public bool ReadInput()
         {
             if (string.IsNullOrEmpty(_filePath) || !File.Exists(_filePath))
@@ -38,19 +42,18 @@ namespace BattleShipGame.GamePlay
 
 
 
-
-            _userInput.Player = new List<Player>
+            _userInput.Player = new List<IPlayer>
             {
                 new Player(new BattleArea(new CreateArea
                 {
                     Column = _userInput.Width,
                     Row = _userInput.Height
-                })),
+                })){ Name = "Player-1", Missiles = lines.ElementAt(lines.Count() - 2).Split(' ').Select(m => new Missile(m.ToCell())).ToList()},
                 new Player(new BattleArea(new CreateArea
                 {
                     Column = _userInput.Width,
                     Row = _userInput.Height
-                }))
+                })){ Name = "Player-2", Missiles = lines.ElementAt(lines.Count() - 1).Split(' ').Select(m => new Missile(m.ToCell())).ToList()}
             };
 
 
@@ -68,94 +71,50 @@ namespace BattleShipGame.GamePlay
 
             }
 
-            _userInput.Player[0].Missiles = lines.ElementAt(lines.Count() - 2).Split(' ').Select(m => new Missile(m.ToCell()));
-            _userInput.Player[1].Missiles = lines.ElementAt(lines.Count() - 1).Split(' ').Select(m => new Missile(m.ToCell()));
-
             return true;
-
-
         }
+
 
         public void InitiatePlay()
         {
-            var p1M = _userInput.Player[0].Missiles.ToList();
-            var p2M = _userInput.Player[1].Missiles.ToList();
-
-            while ((p1M.Exists(x => x.IsFired == false) || p2M.Exists(x => x.IsFired == false)))
+            var player1 = _userInput.Player[0];
+            var player2 = _userInput.Player[1];
+            while (player1.GetNextMissile != null || player2.GetNextMissile != null)
             {
-                if (_userInput.Player[0].BattleArea.IsDestroyed || _userInput.Player[1].BattleArea.IsDestroyed)
-                    break;
-                Player1Fire(p1M);
-                if (_userInput.Player[0].BattleArea.IsDestroyed || _userInput.Player[1].BattleArea.IsDestroyed)
-                    break;
-                Player2Fire(p2M);
+                if (Fire(player1, player2))
+                    return;
+                if (Fire(player2, player1))
+                    return;
             }
-
-            if (!_userInput.Player[0].BattleArea.IsDestroyed && !_userInput.Player[1].BattleArea.IsDestroyed)
-                Console.WriteLine(Resources.Startup_InitiatePlay_Game_has_ended_in_draw);
-
+            Console.WriteLine(Resources.Startup_InitiatePlay_Game_has_ended_in_draw);
         }
 
-        private void Player1Fire( List<Missile> p1M)
+        private static bool Fire(IPlayer player1, IPlayer player2)
         {
-            while (true)
+            var missile = player1.GetNextMissile;
+            if (missile == null)
             {
-                if (_userInput.Player[1].BattleArea.IsDestroyed)
-                {
-                    Console.WriteLine(Resources.Startup_Player1Fire_Player_1_won_the_battle);
-                    break;
-                }
-
-
-                if (!p1M.Exists(x => x.IsFired == false))
-                {
-                    Console.WriteLine(Resources.Startup_Player1Fire_Player_1_has_no_more_missiles_left_to_launch);
-                }
-                else
-                {
-                    var cell = p1M.First(x => x.IsFired == false).Cell;
-                    p1M.First(x => x.IsFired == false).IsFired = true;
-                    if (_userInput.Player[1].BattleArea.Strike(cell) == Enums.HitAcknowledgement.Hit)
-                    {
-                        Console.WriteLine(Resources.Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_hit, cell.ToCoordinates());
-                        continue;
-                    }
-                    Console.WriteLine(Resources.Startup_Player1Fire_Player_1_fires_a_missile_with_target__0__which_got_miss, cell.ToCoordinates());
-                }
-
-                break;
+                Console.WriteLine(Resources.Startup_Fire__0__has_no_more_missiles_left_to_launch, player1.Name);
+                return false;
             }
-        }
 
-        private void Player2Fire(List<Missile> p2M)
-        {
-
-            while (true)
+            missile.IsFired = true;
+            if (player2.BattleArea.Strike(missile.Cell) != Enums.HitAcknowledgement.Hit)
             {
-                if (_userInput.Player[0].BattleArea.IsDestroyed)
-                {
-                    Console.WriteLine(Resources.Startup_Player2Fire_Player_2_won_the_battle);
-                    break;
-                }
-
-                if (!p2M.Exists(x => x.IsFired == false))
-                {
-                    Console.WriteLine(Resources.Startup_Player2Fire_Player_2_has_no_more_missiles_left_to_launch);
-                }
-                else
-                {
-                    var cell = p2M.First(x => x.IsFired == false).Cell;
-                    p2M.First(x => x.IsFired == false).IsFired = true;
-                    if (_userInput.Player[0].BattleArea.Strike(cell) == Enums.HitAcknowledgement.Hit)
-                    {
-                        Console.WriteLine(Resources.Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_hit, cell.ToCoordinates());
-                        continue;
-                    }
-                    Console.WriteLine(Resources.Startup_Player2Fire_Player_2_fires_a_missile_with_target__0__which_got_miss, cell.ToCoordinates());
-                }
-
-                break;
+                Console.WriteLine(Resources.Startup_Fire__0__fires_a_missile_with_target__1__which_got_miss, player1.Name, missile.Cell.ToCoordinates());
+                return false;
             }
+
+            Console.WriteLine(Resources.Startup_Fire__0__fires_a_missile_with_target__1__which_got_hit, player1.Name, missile.Cell.ToCoordinates());
+            if (player2.BattleArea.IsDestroyed)
+            {
+                Console.WriteLine(Resources.Startup_Fire__0__won_the_battle, player1.Name);
+                return true;
+            }
+
+            Fire(player1, player2);
+
+            return false;
         }
     }
 }
