@@ -81,8 +81,8 @@
     <Compile Include="Elements\Ship\PShip.cs" />
     <Compile Include="Elements\Ship\QShip.cs" />
     <Compile Include="Extensions\BattleCellExtensions.cs" />
-    <Compile Include="Validatiors\AddShipValidator.cs" />
-    <Compile Include="Validatiors\CreateAreaValidator.cs" />
+    <Compile Include="Validators\AddShipValidator.cs" />
+    <Compile Include="Validators\CreateAreaValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
