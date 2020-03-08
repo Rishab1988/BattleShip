@@ -1,4 +1,6 @@
-﻿using BattleShipGame.Elements.Area.Interface;
+﻿using System;
+using System.Linq;
+using BattleShipGame.Elements.Area.Interface;
 using BattleShipGame.Elements.Cell;
 using BattleShipGame.Elements.Ship.Interface;
 using BattleShipGame.Enums;
@@ -30,6 +32,16 @@ namespace BattleShipGame.Elements.Area
                 _area[i, j] = new BattleCell();
 
             _addShipValidator = new AddShipValidator(_area);
+        }
+
+        public virtual BattleCell[,] GetArea
+        {
+            get
+            {
+                var tempArray = new BattleCell[_area.GetLength(0), _area.GetLength(1)];
+                Array.Copy(_area, tempArray, _area.Length);
+                return tempArray;
+            }
         }
 
         public virtual void AddShip(IAddShip addShip)
@@ -68,5 +80,6 @@ namespace BattleShipGame.Elements.Area
                     return true;
             }
         }
+
     }
 }

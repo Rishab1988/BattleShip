@@ -60,6 +60,7 @@
     <Compile Include="Elements\Ship\Interface\IAddShip.cs" />
     <Compile Include="Elements\Ship\ShipFactory.cs" />
     <Compile Include="Enums\BatteShipGameKeys.cs" />
+    <Compile Include="Exceptions\BattleShipInputException.cs" />
     <Compile Include="Exceptions\BattleShipValidationException.cs" />
     <Compile Include="Elements\Area\CreateArea.cs" />
     <Compile Include="Elements\Cell\Cell.cs" />

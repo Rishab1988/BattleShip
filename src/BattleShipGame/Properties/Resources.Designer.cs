@@ -70,11 +70,38 @@ namespace BattleShipGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error detail: {0}.
+        /// </summary>
+        internal static string Program_Main_Error_detail___0_ {
+            get {
+                return ResourceManager.GetString("Program_Main_Error_detail___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error detail inner: {0}.
+        /// </summary>
+        internal static string Program_Main_Error_detail_inner___0_ {
+            get {
+                return ResourceManager.GetString("Program_Main_Error_detail_inner___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error reading from input file.
         /// </summary>
         internal static string Program_Main_Error_reading_from_input_file {
             get {
                 return ResourceManager.GetString("Program_Main_Error_reading_from_input_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error reading game input.
+        /// </summary>
+        internal static string Program_Main_Error_reading_game_input {
+            get {
+                return ResourceManager.GetString("Program_Main_Error_reading_game_input", resourceCulture);
             }
         }
         
@@ -205,7 +232,7 @@ namespace BattleShipGame.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No valid input file found at : {0}.
+        ///   Looks up a localized string similar to No valid input file found at : .
         /// </summary>
         internal static string Startup_ReadInput_No_valid_input_file_found_at____0_ {
             get {

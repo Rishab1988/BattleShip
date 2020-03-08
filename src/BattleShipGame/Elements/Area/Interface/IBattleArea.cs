@@ -1,4 +1,5 @@
-﻿using BattleShipGame.Elements.Ship.Interface;
+﻿using BattleShipGame.Elements.Cell;
+using BattleShipGame.Elements.Ship.Interface;
 using BattleShipGame.Enums;
 
 namespace BattleShipGame.Elements.Area.Interface
@@ -8,5 +9,7 @@ namespace BattleShipGame.Elements.Area.Interface
         void AddShip(IAddShip addShip);
         bool IsDestroyed { get; }
         HitAcknowledgement Strike(Cell.Cell cell);
+        BattleCell[,] GetArea { get; }
+
     }
 }
