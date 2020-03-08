@@ -7,6 +7,7 @@ using BattleShipGame.Elements.Missile;
 using BattleShipGame.Elements.Player;
 using BattleShipGame.Elements.Player.Interface;
 using BattleShipGame.Elements.Ship;
+using BattleShipGame.Exceptions;
 using BattleShipGame.Extensions;
 using BattleShipGame.Properties;
 
@@ -14,70 +15,109 @@ namespace BattleShipGame.GamePlay
 {
     public class Startup
     {
-        private readonly UserInput _userInput;
-        private readonly string _filePath;
-
-        public Startup(string filePath)
+        public Startup()
         {
-            _filePath = filePath;
-            _userInput = new UserInput();
+            UserInput = new UserInput();
+        }
+
+        public UserInput UserInput { get; }
+
+        public void ReadInputData(IEnumerable<string> lines)
+        {
+            try
+            {
+                AddAreaCounter(lines);
+                AddPlayerElements(lines);
+                AddShips(lines);
+            }
+            catch (BattleShipValidationException)
+            {
+                throw;
+            }
+            catch (Exception k)
+            {
+                throw new BattleShipInputException("Error reading from file", k);
+            }
         }
 
 
       
-        public bool ReadInput()
+        public void ReadInput(string filePath)
         {
-            if (string.IsNullOrEmpty(_filePath) || !File.Exists(_filePath))
+            if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
             {
-                Console.WriteLine(Resources.Startup_ReadInput_No_valid_input_file_found_at____0_, _filePath);
-                return false;
+                throw new BattleShipInputException(Resources.Startup_ReadInput_No_valid_input_file_found_at____0_ + filePath);
             }
 
-            IEnumerable<string> lines = File.ReadAllLines(_filePath);
+            try
+            {
+                IEnumerable<string> lines = File.ReadAllLines(filePath);
+                ReadInputData(lines);
+            }
+            catch (BattleShipValidationException k)
+            {
+                throw;
+            }
+            catch(Exception k)
+            {
+                throw new BattleShipInputException("Error reading from file", k);
+            }
+        }
+
+        private void AddAreaCounter(IEnumerable<string> lines)
+        {
             var x = lines.ElementAt(0).Split(' ');
-            _userInput.Width = x.ElementAt(0).ToColumn();
-            _userInput.Height = x.ElementAt(1).ToRows();
-            _userInput.ShipCount = Convert.ToInt32(lines.ElementAt(1));
+            UserInput.Width = x.ElementAt(0).ToColumn();
+            UserInput.Height = x.ElementAt(1).ToRows();
+            
+        }
 
-
-
-            _userInput.Player = new List<IPlayer>
+        private void AddPlayerElements(IEnumerable<string> lines)
+        {
+            UserInput.Player = new List<IPlayer>
             {
                 new Player(new BattleArea(new CreateArea
                 {
-                    Column = _userInput.Width,
-                    Row = _userInput.Height
-                })){ Name = "Player-1", Missiles = lines.ElementAt(lines.Count() - 2).Split(' ').Select(m => new Missile(m.ToCell())).ToList()},
+                    Column = UserInput.Width,
+                    Row = UserInput.Height
+                }))
+                {
+                    Name = "Player-1",
+                    Missiles = lines.ElementAt(lines.Count() - 2).Split(' ').Select(m => new Missile(m.ToCell())).ToList()
+                },
                 new Player(new BattleArea(new CreateArea
                 {
-                    Column = _userInput.Width,
-                    Row = _userInput.Height
-                })){ Name = "Player-2", Missiles = lines.ElementAt(lines.Count() - 1).Split(' ').Select(m => new Missile(m.ToCell())).ToList()}
+                    Column = UserInput.Width,
+                    Row = UserInput.Height
+                }))
+                {
+                    Name = "Player-2",
+                    Missiles = lines.ElementAt(lines.Count() - 1).Split(' ').Select(m => new Missile(m.ToCell())).ToList()
+                }
             };
+        }
 
-
-
-            for (var i = 0; i < _userInput.ShipCount; i++)
+        private void AddShips(IEnumerable<string> lines)
+        {
+            UserInput.ShipCount = Convert.ToInt32(lines.ElementAt(1));
+            for (var i = 0; i < UserInput.ShipCount; i++)
             {
                 var shipData = lines.ElementAt(2 + i).Split(' ');
-                _userInput.Player[0].BattleArea.AddShip(new AddShip(
+                UserInput.Player[0].BattleArea.AddShip(new AddShip(
                     ShipFactory.GetShip(shipData[0]), shipData[1].ToHeightOrWidth(), shipData[2].ToHeightOrWidth()
                     , shipData[3].ToCell().Column, shipData[3].ToCell().Row));
 
-                _userInput.Player[1].BattleArea.AddShip(new AddShip(
+                UserInput.Player[1].BattleArea.AddShip(new AddShip(
                     ShipFactory.GetShip(shipData[0]), shipData[1].ToHeightOrWidth(), shipData[2].ToHeightOrWidth()
                     , shipData[4].ToCell().Column, shipData[4].ToCell().Row));
-
             }
-
-            return true;
         }
 
 
         public void InitiatePlay()
         {
-            var player1 = _userInput.Player[0];
-            var player2 = _userInput.Player[1];
+            var player1 = UserInput.Player[0];
+            var player2 = UserInput.Player[1];
             while (player1.GetNextMissile != null || player2.GetNextMissile != null)
             {
                 if (Fire(player1, player2))

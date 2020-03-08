@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Startup_ReadInput_No_valid_input_file_found_at____0_" xml:space="preserve">
-    <value>No valid input file found at : {0}</value>
+    <value>No valid input file found at : </value>
   </data>
   <data name="Program_Main_Validation_Errors" xml:space="preserve">
     <value>Error creating game elements</value>
@@ -167,5 +167,14 @@
   </data>
   <data name="Startup_Fire__0__won_the_battle" xml:space="preserve">
     <value>{0} won the battle</value>
+  </data>
+  <data name="Program_Main_Error_reading_game_input" xml:space="preserve">
+    <value>Error reading game input</value>
+  </data>
+  <data name="Program_Main_Error_detail_inner___0_" xml:space="preserve">
+    <value>Error detail inner: {0}</value>
+  </data>
+  <data name="Program_Main_Error_detail___0_" xml:space="preserve">
+    <value>Error detail: {0}</value>
   </data>
 </root>
